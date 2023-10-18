@@ -1,7 +1,7 @@
 <template>
   <div class="home container mx-auto">
     <GoogleMap
-      :api-key="process.env.VUE_APP_GOOGLE_MAP_API_KEY"
+      api-key="AIzaSyBWiPC71sMkSoaa0TNrioE8CP1Ll5HmpZ4"
       style="width: 100%; height: 500px"
       :center="center"
       :zoom="12"
