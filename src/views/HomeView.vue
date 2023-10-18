@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import CountersList from '../components/Counters/CountersList.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <CountersList />
   </main>
 </template>
