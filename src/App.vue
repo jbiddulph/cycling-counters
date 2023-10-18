@@ -5,5 +5,5 @@
 
 <script setup>
 import NavHeader from './components/NavHeader.vue'
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 </script>
