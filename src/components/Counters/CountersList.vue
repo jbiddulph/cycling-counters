@@ -6,9 +6,7 @@
       :center="center"
       :zoom="12"
     >
-      <!-- Use v-for to loop through counters and add markers -->
       <Marker v-for="counter in counters" :options="markerOptions(counter)" :key="counter.usmart_id">
-        <!-- Use InfoWindow to display additional information -->
         <InfoWindow :options="infoWindowOptions(counter)">
           <CounterItem :counter="counter" />
         </InfoWindow>
@@ -36,17 +34,15 @@ onMounted(async () => {
     counters.value = counterStore.counters
 })
 
-// Define marker options for each counter
 const markerOptions = (counter) => {
   return {
-    position: { lat: counter.latitude, lng: counter.longitude }, // Set the marker position based on the counter's coordinate
+    position: { lat: counter.latitude, lng: counter.longitude },
   }
 }
 
-// Define InfoWindow options for each counter
 const infoWindowOptions = (counter) => {
   return {
-    position: { lat: counter.latitude, lng: counter.longitude }, // Set the InfoWindow position to match the marker
+    position: { lat: counter.latitude, lng: counter.longitude },
   }
 }
 </script>
