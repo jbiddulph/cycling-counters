@@ -12,14 +12,15 @@
         </InfoWindow>
       </Marker>
     </GoogleMap>
+    <div style="width: 100%"><canvas id="acquisitions"></canvas></div>
   </div>
 </template>
 
 <script setup>
 import CounterItem from '@/components/Counters/CounterItem.vue'
 import { useCounterStore } from '@/stores/counterStore'
-import { GoogleMap, Marker, InfoWindow } from 'vue3-google-map'
 import { onMounted, ref, reactive } from 'vue'
+import Chart from 'chart.js/auto'
 
 /* Counter */
 const counters = ref([])
@@ -32,6 +33,22 @@ const counterStore = useCounterStore()
 onMounted(async () => {
     await counterStore.fetchCounters()
     counters.value = counterStore.counters
+
+    new Chart(
+    document.getElementById('acquisitions'),
+    {
+      type: 'line',
+      data: {
+        labels: counters.value.map(row => row.startTime),
+        datasets: [
+          {
+            label: 'Count',
+            data: counters.value.map(row => row.count)
+          }
+        ]
+      }
+    }
+  )
 })
 
 const markerOptions = (counter) => {

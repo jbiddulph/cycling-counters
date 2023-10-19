@@ -3,7 +3,7 @@ import CountersList from '../components/Counters/CountersList.vue'
 </script>
 
 <template>
-  <main>
+  <div>
     <CountersList />
-  </main>
+  </div>
 </template>
