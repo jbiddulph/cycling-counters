@@ -12,7 +12,11 @@
         </InfoWindow>
       </Marker>
     </GoogleMap>
-    <div style="width: 100%"><canvas id="acquisitions"></canvas></div>
+    <div class="chart-container overflow-x-auto">
+      <div class="chart-scroll">
+        <canvas id="acquisitions"></canvas>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -39,7 +43,10 @@ onMounted(async () => {
     {
       type: 'line',
       data: {
-        labels: counters.value.map(row => row.startTime),
+        labels: counters.value.map(row => {
+          const date = new Date(row.startTime)
+          return date.toLocaleDateString()
+        }),
         datasets: [
           {
             label: 'Count',
@@ -63,3 +70,14 @@ const infoWindowOptions = (counter) => {
   }
 }
 </script>
+
+<style>
+.chart-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.chart-scroll {
+  width: 2400px; /* Adjust this width as needed */
+}
+</style>
