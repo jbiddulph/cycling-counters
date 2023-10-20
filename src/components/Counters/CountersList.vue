@@ -12,19 +12,15 @@
         </InfoWindow>
       </Marker>
     </GoogleMap>
-    <div class="chart-container overflow-x-auto">
-      <div class="chart-scroll">
-        <canvas id="acquisitions"></canvas>
-      </div>
-    </div>
+    <LineChart v-if="counters.length > 0" :counters="counters" />
   </div>
 </template>
 
 <script setup>
 import CounterItem from '@/components/Counters/CounterItem.vue'
+import LineChart from '@/components/Counters/LineChart.vue'
 import { useCounterStore } from '@/stores/counterStore'
 import { onMounted, ref, reactive } from 'vue'
-import Chart from 'chart.js/auto'
 
 /* Counter */
 const counters = ref([])
@@ -35,27 +31,8 @@ const center = reactive({
 const counterStore = useCounterStore()
 
 onMounted(async () => {
-    await counterStore.fetchCounters()
-    counters.value = counterStore.counters
-
-    new Chart(
-    document.getElementById('acquisitions'),
-    {
-      type: 'line',
-      data: {
-        labels: counters.value.map(row => {
-          const date = new Date(row.startTime)
-          return date.toLocaleDateString()
-        }),
-        datasets: [
-          {
-            label: 'Count',
-            data: counters.value.map(row => row.count)
-          }
-        ]
-      }
-    }
-  )
+  await counterStore.fetchCounters()
+  counters.value = counterStore.counters
 })
 
 const markerOptions = (counter) => {
@@ -70,14 +47,3 @@ const infoWindowOptions = (counter) => {
   }
 }
 </script>
-
-<style>
-.chart-container {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.chart-scroll {
-  width: 2400px; /* Adjust this width as needed */
-}
-</style>
