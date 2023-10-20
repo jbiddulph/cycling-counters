@@ -39,13 +39,19 @@
                 class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                 aria-current="page"
               >
-                Home
+                Glasgow City Council
               </RouterLink>
               <RouterLink
-                to="/about"
+                to="/john-muir-way"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
               >
-                About
+                John Muir Way
+              </RouterLink>
+              <RouterLink
+                to="/edinburgh-council"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+              >
+                Edinburgh City Council
               </RouterLink>
             </div>
           </div>
@@ -64,15 +70,23 @@
           :class="{'bg-gray-900': $route.path === '/', 'text-gray-300 hover:bg-gray-700 hover:text-white': $route.path !== '/'}"
           aria-current="page"
         >
-          Home
+          Glasgow City Council
+        </RouterLink>
+        <RouterLink
+          @click="mobileMenuOpen = !mobileMenuOpen"
+          to="/john-muir-way"
+          class="text-white rounded-md px-3 py-2 text-sm font-medium flex w-full"
+          :class="{'bg-gray-900': $route.path === '/john-muir-way', 'text-gray-300 hover:bg-gray-700 hover:text-white': $route.path !== '/john-muir-way'}"
+        >
+          John Muir Way
         </RouterLink>
         <RouterLink
           @click="mobileMenuOpen = !mobileMenuOpen"
           to="/about"
           class="text-white rounded-md px-3 py-2 text-sm font-medium flex w-full"
-          :class="{'bg-gray-900': $route.path === '/about', 'text-gray-300 hover:bg-gray-700 hover:text-white': $route.path !== '/about'}"
+          :class="{'bg-gray-900': $route.path === '/edinburgh-council', 'text-gray-300 hover:bg-gray-700 hover:text-white': $route.path !== '/edinburgh-council'}"
         >
-          About
+          Edinburgh City Council
         </RouterLink>
       </div>
     </div>

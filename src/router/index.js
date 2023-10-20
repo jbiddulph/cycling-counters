@@ -1,19 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
+import GlasgowCouncilView from '../views/GlasgowCouncilView.vue'
+import JohnMuirWayView from '../views/JohnMuirWayView.vue'
+import EdinburghCouncilView from '../views/EdinburghCouncilView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      name: 'GlasgowCouncil',
+      component: GlasgowCouncilView
     },
     {
-      path: '/about',
-      name: 'about',
-      component: AboutView
+      path: '/john-muir-way',
+      name: 'JohnMuirWay',
+      component: JohnMuirWayView
+    },
+    {
+      path: '/edinburgh-council',
+      name: 'EdinburghCouncil',
+      component: EdinburghCouncilView
     }
   ]
 })
